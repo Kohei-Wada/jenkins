@@ -1,0 +1,18 @@
+volumes:
+  jenkins-data:
+
+services:
+  identijenk:
+    build: .
+    ports:
+      - "58080:8080"
+    volumes:
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+      - type : volume
+        source: jenkins-data
+        target: /var/lib/jenkins
+      - type: volume
+        source: jenkins-data
+        target: /var/jenkins_home
