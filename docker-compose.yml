@@ -2,8 +2,9 @@ volumes:
   jenkins-data:
 
 services:
-  identijenk:
+  jenkins:
     build: .
+    container_name: jenkins
     ports:
       - "58080:8080"
     volumes:
@@ -16,3 +17,6 @@ services:
       - type: volume
         source: jenkins-data
         target: /var/jenkins_home
+      - type: volume
+        source: jenkins-data
+        target: /home/jenkins/.ssh
