@@ -4,6 +4,7 @@ build:
 install:
 	@make up
 	@docker compose exec jenkins bash -c 'cd && mkdir -p .ssh && ssh-keygen -t rsa -b 4096 -f .ssh/id_rsa -q -N ""'
+	@docker compose exec jenkins bash -c 'cd && ssh-keyscan github.com >> .ssh/known_hosts'
 
 up:
 	@docker compose up -d
